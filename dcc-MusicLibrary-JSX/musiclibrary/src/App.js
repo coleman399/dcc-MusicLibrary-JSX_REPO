@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import './App.css';
+import SongTable from './components/SongTable/SongTable.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class App extends Component {
   }
 
   async getSongs() {
-    let response = await axios.get('http://127.0.0.1:8000/music/')
+    let response = await axios.get('http://127.0.0.1:8000/music/')   
     console.log(response.data);
     this.setState({
       songs: response.data
@@ -24,18 +25,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        {this.state.songs.map(song => {
-          return (
-            <ul className="list-group">
-              <li>title: {song.title}</li>
-              <li>artist: {song.artist}</li>
-              <li>album: {song.album}</li>
-              <li>genre: {song.genre}</li>
-              <li>-----------------------------------------------</li>
-            </ul> 
-          )
-        })})
+      <div className="container-fluid">
+        <SongTable {...this.state}/>
       </div>
     );
   }
