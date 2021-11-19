@@ -49,12 +49,30 @@ class App extends Component {
     }
   }
 
-  searchSong = async (search) => {
+  searchSong = (search) => {
     this.getSongs();
     let songs = this.state.songs;
-    let foundSong = songs.find(song => song.title === search.query);
-    console.log(foundSong);
-    alert(`Song Found!\nTitle: ${foundSong.title}\nArtist: ${foundSong.artist}\nAlbum: ${foundSong.album}\nGenre: ${foundSong.genre}\nRelease Date: ${foundSong.release_date}`)
+    let foundSongs = this.searchedSong(songs, search.query);
+    this.setState({
+      foundSongs
+    })
+    console.log(foundSongs[0].title);
+  }
+  
+  searchedSong = (songs, query) => {
+      return songs.filter(song => song.title == query).map(({
+        id,
+        title,
+        album,
+        genre,
+        release_date
+      }) => ({
+        id,
+        title,
+        album,
+        genre,
+        release_date
+      }));
   } 
 
   render() {
