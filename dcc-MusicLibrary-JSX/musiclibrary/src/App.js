@@ -15,7 +15,7 @@ class App extends Component {
     this.getSongs();
   }
 
-  async getSongs() {
+  getSongs = async () => {
     let response = await axios.get('http://127.0.0.1:8000/music/')   
     console.log(response.data);
     this.setState({
@@ -28,18 +28,8 @@ class App extends Component {
     this.getSongs()
   }
 
-  deletedSong(songs, id) {
-    let newSongs = [];
-    songs.map((song) => {
-      if (song.id !== id){
-        newSongs.push(songs)
-      }
-    })
-    return newSongs;
-  }
-
   addSong = async (newSong) => {
-    let id = this.state.songs.length ? this.state.songs[this.state.songs.length -1].id + 1 : 1;
+    let id = this.state.songs.length + 1
     let song = {
       id: id,
       title: newSong.title,
@@ -49,8 +39,7 @@ class App extends Component {
       release_date: newSong.release_date
     }
     try {
-      let response = await axios.post('http://127.0.0.1:8000/music/', newSong);
-      console.log(response.data)
+      await axios.post('http://127.0.0.1:8000/music/', song);
       this.setState({
         songs: [...this.state.songs, song],
       }, () => console.log(this.state.songs));
@@ -59,21 +48,15 @@ class App extends Component {
     }
   }
 
-  addedSong(songs, id) {
-    let newSongs = [];
-    songs.map((song => {
-      if (song.id !== id){
-        newSongs.push(songs)
-      }
-    }))
-    return newSongs;
+  searchSong = async (id) => {
+    
   }
 
   render() {
     return (
       <div className="container-fluid">
         <SongTable {...this.state} deleteSong = {this.deleteSong}/>
-        <SongCreator {...this.state} addSong = {this.addSong} />
+        <SongCreator addSong = {this.addSong} />
       </div>
     );
   }
