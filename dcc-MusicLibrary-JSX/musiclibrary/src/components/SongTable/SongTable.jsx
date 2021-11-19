@@ -1,6 +1,8 @@
 import React from 'react';
+import './SongTable.css'
 
 const SongTable = (props) => {
+    
     return (
         <div>
             <table className="table">
@@ -18,7 +20,7 @@ const SongTable = (props) => {
                                 <td>{song.album}</td>
                                 <td>{song.genre}</td>
                                 <td>{song.release_date}</td>
-                                <td><button onClick={props.deleteSong.bind(this, song.id)}>Delete</button></td>
+                                <td><button onClick={()=> props.deleteSong(song.id)}>Delete</button></td>
                             </tr>
                         )
                     })}
