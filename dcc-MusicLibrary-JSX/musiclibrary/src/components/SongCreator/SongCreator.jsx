@@ -46,7 +46,7 @@ class SongCreator extends Component {
                     Genre: <input className="form-control"type="text" name="genre"value ={this.state.genre}onChange={this.handleChange}/><br />
                     Release Date: <input className="form-control"type="date"name="release_date"value={this.state.release_date}onChange={this.handleChange}/>
                     <br/>
-                    <button className="btn btn-primary"type="submit" value="submit">Submit</button>
+                    <div className="text-center"><button className="btn btn-primary"type="submit" value="submit">Submit</button></div>
                 </form>
             </div>
         )

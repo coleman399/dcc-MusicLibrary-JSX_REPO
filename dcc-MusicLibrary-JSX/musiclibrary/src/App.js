@@ -17,16 +17,24 @@ class App extends Component {
   }
 
   getSongs = async () => {
-    let response = await axios.get('http://127.0.0.1:8000/music/');   
-    console.log(response.data);
-    this.setState({
-      songs: response.data
-    });
+    try {
+      let response = await axios.get('http://127.0.0.1:8000/music/');   
+      console.log(response.data);
+      this.setState({
+        songs: response.data
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
    deleteSong = async (id) => {
-    await axios.delete('http://127.0.0.1:8000/music/' + id + '/');   
-    this.getSongs();
+    try {
+      await axios.delete('http://127.0.0.1:8000/music/' + id + '/');   
+      this.getSongs();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   addSong = async (newSong) => {
@@ -49,18 +57,31 @@ class App extends Component {
     }
   }
 
-  searchSong = (search) => {
-    this.getSongs();
+  searchSong = async (search) => {
     let songs = this.state.songs;
     let foundSongs = this.searchedSong(songs, search.query);
-    this.setState({
-      foundSongs
-    })
-    console.log(foundSongs[0].title);
+    if (foundSongs === undefined){
+      this.getSongs();
+    } else {
+      Promise.all(foundSongs.map(async (song, i) => {
+        let response;
+        try {
+          response = await axios.get('http://127.0.0.1:8000/music/' + song[i].id + '/');
+          return response.data
+        } catch (err) {
+          console.log(err);
+        }
+      })).then(response => {
+        this.setState({
+          songs: response
+        })
+        console.log(response);
+      })
+    }
   }
   
   searchedSong = (songs, query) => {
-      return songs.filter(song => song.title == query).map(({
+    let title = songs.filter(song => song.title == query).map(({
         id,
         title,
         album,
@@ -73,6 +94,57 @@ class App extends Component {
         genre,
         release_date
       }));
+    let artist = songs.filter(song => song.artist == query).map(({
+        id,
+        title,
+        album,
+        genre,
+        release_date
+      }) => ({
+        id,
+        title,
+        album,
+        genre,
+        release_date
+      }));
+    let album = songs.filter(song => song.album == query).map(({
+        id,
+        title,
+        album,
+        genre,
+        release_date
+      }) => ({
+        id,
+        title,
+        album,
+        genre,
+        release_date
+      }));
+    let genre = songs.filter(song => song.genre == query).map(({
+        id,
+        title,
+        album,
+        genre,
+        release_date
+      }) => ({
+        id,
+        title,
+        album,
+        genre,
+        release_date
+      }));
+    let foundSongs = [title, artist, album, genre]
+    let i = 0;
+    let sortedSongs; 
+    while (i < foundSongs.length-1) {
+      sortedSongs = foundSongs.filter(song => song == foundSongs[i])
+      i += 1;   
+    }
+    if (sortedSongs[0].length !== 0){
+      return sortedSongs;
+    } else {
+      this.getSongs();
+    }
   } 
 
   render() {

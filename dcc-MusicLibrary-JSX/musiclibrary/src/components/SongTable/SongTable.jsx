@@ -5,7 +5,7 @@ const SongTable = (props) => {
     return (
         <div>
             <h1 className="text-center">Song Table</h1>
-            <table className="table table-bordered" id="SongTable">
+            <table className="table table-bordered">
                 <thead>
                     <th scope="col">Title</th>
                     <th scope="col">Artist</th>
@@ -29,7 +29,6 @@ const SongTable = (props) => {
                     })}
                 </tbody>    
             </table>
-            <script>$('#SongTable').DataTable();</script> 
         </div>
     )
 }
