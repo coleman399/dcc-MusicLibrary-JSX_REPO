@@ -37,14 +37,16 @@ class SongCreator extends Component {
     
     render() {
         return (
-            <div>
-                <form onSubmit={(event)=> this.handleSubmit(event)}>
-                    Song Title:<input type="text" name="title"value={this.state.title}onChange={this.handleChange}/><br />
-                    Artist:<input type="text" name="artist"value={this.state.artist}onChange={this.handleChange}/><br />
-                    Album:<input type="text" name="album"value={this.state.album}onChange={this.handleChange}/><br />
-                    Genre:<input type="text" name="genre"value ={this.state.genre}onChange={this.handleChange}/><br />
-                    Release Date:<input type="date"name="release_date"value={this.state.release_date}onChange={this.handleChange}/>
-                    <button type="submit" value="submit">Submit</button>
+            <div className="form-group">
+                <h1 className="text-center">Song Creator</h1>
+                <form className="form-control"onSubmit={(event)=> this.handleSubmit(event)}>
+                    Title: <input className="form-control" type="text" name="title"value={this.state.title}onChange={this.handleChange}/><br />
+                    Artist: <input className="form-control"type="text" name="artist"value={this.state.artist}onChange={this.handleChange}/><br />
+                    Album: <input className="form-control"type="text" name="album"value={this.state.album}onChange={this.handleChange}/><br />
+                    Genre: <input className="form-control"type="text" name="genre"value ={this.state.genre}onChange={this.handleChange}/><br />
+                    Release Date: <input className="form-control"type="date"name="release_date"value={this.state.release_date}onChange={this.handleChange}/>
+                    <br/>
+                    <button className="btn btn-primary"type="submit" value="submit">Submit</button>
                 </form>
             </div>
         )

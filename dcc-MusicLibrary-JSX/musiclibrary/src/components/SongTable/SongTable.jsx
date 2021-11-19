@@ -2,15 +2,18 @@ import React from 'react';
 import './SongTable.css'
 
 const SongTable = (props) => {
-    
     return (
         <div>
-            <table className="table">
-                    <th scope="col">title</th>
-                    <th scope="col">artist</th>
-                    <th scope="col">album</th>
-                    <th scope="col">genre</th>
-                    <th scope="col">release date</th>
+            <h1 className="text-center">Song Table</h1>
+            <table className="table table-bordered" id="SongTable">
+                <thead>
+                    <th scope="col">Title</th>
+                    <th scope="col">Artist</th>
+                    <th scope="col">Album</th>
+                    <th scope="col">Genre</th>
+                    <th scope="col">Release Date</th>
+                    <th className="text-center"scope="col">Delete</th>
+                </thead>
                 <tbody>
                     {props.songs.map(song => {
                         return (
@@ -20,12 +23,13 @@ const SongTable = (props) => {
                                 <td>{song.album}</td>
                                 <td>{song.genre}</td>
                                 <td>{song.release_date}</td>
-                                <td><button onClick={()=> props.deleteSong(song.id)}>Delete</button></td>
-                            </tr>
+                                <td className="text-center"><button type="button" className="btn btn-primary" onClick={()=> props.deleteSong(song.id)}>Delete</button></td>
+                            </tr>                          
                         )
                     })}
                 </tbody>    
-            </table> 
+            </table>
+            <script>$('#SongTable').DataTable();</script> 
         </div>
     )
 }
