@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+![Screenshot (54)](https://user-images.githubusercontent.com/91759734/142705601-1b1998e8-c765-4217-9ae8-e9788b694e7d.png)
+Music Library
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Learning objective: Consume a Web API and connect a React frontend to it
 
-## Available Scripts
+Technologies: React, JavaScript, AXIOS, HTML, CSS, Postman
 
-In the project directory, you can run:
+Total points: /50
 
-### `npm start`
+(5 points): As a developer, I want to make at least 10 good, consistent commits.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+(5 points): As a developer, I want to use the Create-React-App command to create my React project.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+(10 points) As a developer, I want to use AXIOS on the frontend to consume my Music Library Django 
+REST API.
 
-### `npm test`
+(10 points) As a developer, I want to display the data (song title, album, artist, genre, and release date)
+from the API within a table on the frontend.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+(5 points) As a developer, I want to create a delete button for each row on my table that will make a 
+DELETE request to my backend API for that song object.
 
-### `npm run build`
+(10 points) As a developer, I want to create a form on a stateful component that allows me to POST a 
+new song to my backend API.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+(5 points): As a developer, I want to create a minimum of three React components and use them within 
+my React application. (EX: SongForm, SearchBar, MusicTable)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+(5 points) As a developer, I want to have an aesthetically pleasing user interface to ensure a great user 
+experience.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+(10 points) As a music enthusiast, I want to be able to filter the table of music by album, artist, genre, 
+release date, and title.
 
-### `npm run eject`
+BONUS:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+(5 points) As a developer, I want to add the functionality to update a specific song within my table by 
+making a PUT request to my backend API.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+(5 points) As a developer, I want my update component to be displayed within a modal.
